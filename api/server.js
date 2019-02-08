@@ -9,7 +9,7 @@ server.get("/", async (req, res) => {
   res.status(200).json({ message: "WORKING!" });
 });
 
-server.get("/", async (req, res) => {
+server.get("/items", async (req, res) => {
   const items = await db("testing");
   res.status(200).json(items);
 });
