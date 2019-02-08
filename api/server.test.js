@@ -49,5 +49,13 @@ describe("SERVER", () => {
     });
   });
 
-  describe("DELETE item endpoint", () => {});
+  describe("DELETE item endpoint", () => {
+    it("Return the number of items deleted", async () => {
+      let res = await request(server)
+        .post("/items")
+        .send({ item: "Hello there" });
+      res = await request(server).delete("/items/1");
+      expect(res.body).toBe(1);
+    });
+  });
 });
