@@ -31,7 +31,23 @@ describe("SERVER", () => {
     });
   });
 
-  describe("POST item endpoint", () => {});
+  describe("POST item endpoint", () => {
+    it("Respond with 201 when item created", async () => {
+      let body = { item: "Hello" };
+      let res = await request(server)
+        .post("/items")
+        .send(body);
+      expect(res.status).toBe(201);
+    });
+
+    it("Return the id of the created item", async () => {
+      let body = { item: "Hello" };
+      let res = await request(server)
+        .post("/items")
+        .send(body);
+      expect(res.body).toEqual([1]);
+    });
+  });
 
   describe("DELETE item endpoint", () => {});
 });
